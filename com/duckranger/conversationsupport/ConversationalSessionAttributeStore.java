@@ -64,9 +64,6 @@ public class ConversationalSessionAttributeStore implements SessionAttributeStor
 	}
 
 	logger.debug("storeAttribute - storing bean reference for (" + attributeName + ").");
-
-	// getConversationStore(request, cId).put(attributeName,
-	// attributeValue);
 	store(request, attributeName, attributeValue, cId);
     }
 
