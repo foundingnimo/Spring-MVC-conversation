@@ -37,7 +37,8 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  *          its own store without adding the cid on the object name. In this way
  *          - the cid and the session attributes are kept separated.
  * 
- * @author Duckranger
+ * @author Nimo Naamani
+ * http://duckranger.com
  */
 
 public class ConversationalSessionAttributeStore implements SessionAttributeStore, InitializingBean {
