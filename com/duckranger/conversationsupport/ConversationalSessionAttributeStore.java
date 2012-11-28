@@ -61,9 +61,8 @@ public class ConversationalSessionAttributeStore implements SessionAttributeStor
 	String cId = getConversationId(request);
 	if (cId == null || cId.trim().length() == 0) {
 	    cId = UUID.randomUUID().toString();
-	    request.setAttribute(CID_FIELD, cId, WebRequest.SCOPE_REQUEST);
 	}
-
+	request.setAttribute(CID_FIELD, cId, WebRequest.SCOPE_REQUEST);
 	logger.debug("storeAttribute - storing bean reference for (" + attributeName + ").");
 	store(request, attributeName, attributeValue, cId);
     }
@@ -185,7 +184,11 @@ public class ConversationalSessionAttributeStore implements SessionAttributeStor
      *         only gets there on form submit)
      */
     private String getConversationId(WebRequest request) {
-	return request.getParameter(CID_FIELD);
+	String cid = request.getParameter(CID_FIELD);
+	if (cid == null) {
+	    cid = (String) request.getAttribute(CID_FIELD, WebRequest.SCOPE_REQUEST);
+	}
+	return cid;
     }
 
     /**
